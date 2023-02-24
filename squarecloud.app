@@ -1,0 +1,5 @@
+DISPLAY_NAME=Dj Tesoura
+MAIN=main.py
+MEMORY=128
+VERSION=recommended
+DESCRIPTION=Dj Tesoura
