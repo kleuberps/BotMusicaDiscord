@@ -119,7 +119,7 @@ class music(commands.Cog):
             if type(song) == type(True):
                 embedvc = discord.Embed(
                     colour= 12255232,#red
-                    description = 'Algo deu errado! Tente mudar ou configurar a playlist/vídeo ou escrever o nome dele novamente!'
+                    description = 'Algo deu errado! Tente novamente!'
                 )
                 msg = await interaction.followup.send(embed=embedvc)
                 await asyncio.sleep(60)
