@@ -31,7 +31,7 @@ class music(commands.Cog):
     def search_yt(self, item):
         with YoutubeDL(self.YDL_OPTIONS) as ydl:
             try: 
-                info = ydl.extract_info('ytsearch: {}'.format(item))['entries'][0]
+                info = ydl.extract_info('ytsearch: {}'.format(item), download=False)['entries'][0]
             except Exception: 
                 return False
 
