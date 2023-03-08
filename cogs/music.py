@@ -132,7 +132,7 @@ class music(commands.Cog):
 
                 msg = await interaction.followup.send(embed=embedvc)
                 self.music_queue.append([song, voice_channel])
-                await asyncio.sleep(60)
+                ##await asyncio.sleep(60)
                 await msg.delete()
                 
                 if self.is_playing == False:
