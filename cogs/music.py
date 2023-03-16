@@ -77,7 +77,7 @@ class music(commands.Cog):
     @app_commands.command(name="ajuda",description="Mostre um comando de ajuda.")
     async def help(self,interaction:discord.Interaction):
         await interaction.response.defer(thinking=True)
-        helptxt = "`/ajuda` - Veja esse guia!\n`/play` - Toque uma música do YouTube!\n`/fila` - Veja a fila de músicas na Playlist\n`/pular` - Pule para a próxima música da fila"
+        helptxt = "`/ajuda` - Veja esse guia!\n`/ouvir` - Toque uma música do YouTube!\n`/fila` - Veja a fila de músicas na Playlist\n`/pular` - Pule para a próxima música da fila"
         embedhelp = discord.Embed(
             colour = 1646116,#grey
             title=f'Comandos do {self.client.user.name}',
@@ -88,16 +88,16 @@ class music(commands.Cog):
         except:
             pass
         msg = await interaction.followup.send(embed=embedhelp)
-        await asyncio.sleep(60)
+        await asyncio.sleep(30)
         await msg.delete()
 
 
-    @app_commands.command(name="play",description="Toca uma música do YouTube.")
+    @app_commands.command(name="ouvir",description="Tocar uma música do YouTube.")
     @app_commands.describe(
-        busca = "Digite o nome da música no YouTube"
+        busca = "Digite o nome/link da música no YouTube"
     )
 
-    async def play(self, interaction:discord.Interaction,busca:str):
+    async def ouvir(self, interaction:discord.Interaction,busca:str):
         await interaction.response.defer(thinking=True)
         query = busca
         
@@ -133,7 +133,7 @@ class music(commands.Cog):
                 msg = await interaction.followup.send(embed=embedvc)
                 self.music_queue.append([song, voice_channel])
                 ##await asyncio.sleep(60)
-                await msg.delete()
+                ##await msg.delete()
                 
                 if self.is_playing == False:
                     await self.play_music()
@@ -152,7 +152,7 @@ class music(commands.Cog):
                 description = f"{retval}"
             )
             msg = await interaction.followup.send(embed=embedvc)
-            await asyncio.sleep(60)
+            await asyncio.sleep(30)
             await msg.delete()
         else:
             embedvc = discord.Embed(
@@ -160,7 +160,7 @@ class music(commands.Cog):
                 description = 'Não existe músicas na fila no momento.'
             )
             msg = await interaction.followup.send(embed=embedvc)
-            await asyncio.sleep(60)
+            await asyncio.sleep(30)
             await msg.delete()
 
 
@@ -177,7 +177,7 @@ class music(commands.Cog):
                 description = f"Você pulou a música."
             )
             msg = await interaction.followup.send(embed=embedvc)
-            await asyncio.sleep(60)
+            await asyncio.sleep(30)
             await msg.delete()
 
     @pular.error #Erros para kick
@@ -188,7 +188,7 @@ class music(commands.Cog):
                 description = f"Você precisa da permissão **Gerenciar canais** para pular músicas."
             )
             msg = await interaction.followup.send(embed=embedvc)    
-            await asyncio.sleep(60)
+            await asyncio.sleep(30)
             await msg.delete() 
         else:
             raise error
