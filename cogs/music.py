@@ -93,9 +93,7 @@ class music(commands.Cog):
 
 
     @app_commands.command(name="ouvir",description="Tocar uma música do YouTube.")
-    @app_commands.describe(
-        busca = "Digite o nome/link da música no YouTube"
-    )
+    @app_commands.describe(busca = "Digite o nome/link da música no YouTube")
 
     async def ouvir(self, interaction:discord.Interaction,busca:str):
         await interaction.response.defer(thinking=True)
